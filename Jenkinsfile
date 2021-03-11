@@ -52,7 +52,7 @@ pipeline {
 		// }
 		stage('Kubernetes') {
 			parallel {
-				stage('deployment'){
+				stage('deployment') {
 					agent {
 						kubernetes {
 							label 'new_flaskapp'
