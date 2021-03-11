@@ -51,11 +51,15 @@ pipeline {
 		// 	}
 		// }
 		stage('Kubernetes') {
-			agent {
-				kubernetes {
-					label 'new_flaskapp'
-					yaml "kubernetes.yaml"
-				}
+			parallel {
+				stage('deployment'){
+					agent {
+						kubernetes {
+							label 'new_flaskapp'
+							yaml "kubernetes.yaml"
+						}	
+					}
+				}	
 			}
 		}
 	//Lastly let's deploy the application via ansible to Kubernetes
