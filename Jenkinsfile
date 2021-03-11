@@ -40,7 +40,7 @@ pipeline {
 					}
 				}
 			}
-		// }
+		}
 		// stage('Deploy to kubernetes via Terraform') {
 		// 	steps {
 		// 	    dir('./Capstone_Part_2') {
