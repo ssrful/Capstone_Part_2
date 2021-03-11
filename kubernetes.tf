@@ -84,7 +84,7 @@ resource "kubernetes_service" "new_flaskapp" {
       App = kubernetes_deployment.new_flaskapp.spec.0.template.0.metadata[0].labels.App
     }
     port {
-      node_port   = 35000
+      node_port   = 30005
       port        = 5000
       target_port = 5000
     }
