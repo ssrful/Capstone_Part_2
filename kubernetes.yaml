@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: capstone_project_2
+  name: capstone-project-2
   labels:
-    app: new_flaskapp
+    app: new-flaskapp
 spec:
   selector:
     matchLabels:
-      app: new_flaskapp
+      app: new-flaskapp
   replicas: 3
   template:
     metadata:
       labels:
-        app: new_flaskapp
+        app: new-flaskapp
     spec:
       containers:
-      - name: new_flaskapp
+      - name: new-flaskapp
         image: ssrful/new_flaskapp
         ports:
         - containerPort: 5000
@@ -23,11 +23,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: capstone_project_2
+  name: capstone-project-2
 spec:
   type: NodePort
   selector:
-    app: new_flaskapp
+    app: new-flaskapp
   ports:
   - protocol: TCP
     port: 5000
