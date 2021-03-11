@@ -68,7 +68,6 @@ resource "kubernetes_deployment" "new_flaskapp" {
       }
     }
   }
-  # deployment shouldn't take longer than a few minutes normally
   timeouts {
     create = "1m"
     update = "1m"
