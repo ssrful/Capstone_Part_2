@@ -41,24 +41,14 @@ pipeline {
 				}
 			}
 		}
-		stage('Deploy to kubernetes') {
+		stage('Deploy to kubernetes via Terraform') {
 			steps {
 			    dir('./Capstone_Part_2') {
 				    script {
-					    sh 'kubectl apply -f kubernetes.yaml'
-                        sh 'kubectl get service/capstone_project_2'
+					    sh 'if (cd $APP_HOME/templates; terraform init; terraform apply -auto-approve;fi'
 				    }
 				}
 			}
-		}
-		stage('Minikube service') {
-		    steps {
-		        dir('./Capstone_Part_2') {
-				    script {
-		                sh 'echo "Application deployed"'
-					}
-		        }
-		    }
 		}
 	//Lastly let's deploy the application via ansible to Kubernetes
 	//stage('Deploy to Kubernetes/Ansible') {
