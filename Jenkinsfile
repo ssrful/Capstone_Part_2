@@ -40,13 +40,21 @@ pipeline {
 					}
 				}
 			}
-		}
-		stage('Deploy to kubernetes via Terraform') {
-			steps {
-			    dir('./Capstone_Part_2') {
-				    script {
-					    sh 'cd $APP_HOME/templates; terraform init; terraform apply -auto-approve'
-				    }
+		// }
+		// stage('Deploy to kubernetes via Terraform') {
+		// 	steps {
+		// 	    dir('./Capstone_Part_2') {
+		// 		    script {
+		// 			    sh 'cd $APP_HOME/templates; terraform init; terraform apply -auto-approve'
+		// 		    }
+		// 		}
+		// 	}
+		// }
+		stage('Kubernetes') {
+			agent {
+				kubernetes {
+					label 'new_flaskapp'
+					yaml "kubernetes.yaml"
 				}
 			}
 		}
