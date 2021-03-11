@@ -45,7 +45,7 @@ pipeline {
 			steps {
 			    dir('./Capstone_Part_2') {
 				    script {
-					    sh 'if (cd $APP_HOME/templates; terraform init; terraform apply -auto-approve;fi'
+					    sh 'if cd $APP_HOME/templates; terraform init; terraform apply -auto-approve;fi'
 				    }
 				}
 			}
