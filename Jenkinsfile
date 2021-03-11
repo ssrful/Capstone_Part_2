@@ -43,25 +43,27 @@ pipeline {
 		}
 		// stage('Deploy to kubernetes via Terraform') {
 		// 	steps {
-		// 	    dir('./Capstone_Part_2') {
+		// 	    dir('Capstone_Part_2') {
 		// 		    script {
 		// 			    sh 'cd $APP_HOME/templates; terraform init; terraform apply -auto-approve'
 		// 		    }
 		// 		}
 		// 	}
 		// }
-		stage('Kubernetes') {
-			parallel {
-				stage('deployment') {
-					agent {
-						kubernetes {
-							label 'new_flaskapp'
-							yaml "kubernetes.yaml"
-						}	
-					}
-				}	
-			}
-		}
+		stage('Terraform Init') {
+            steps {
+                script {
+                    sh '/usr/local/bin/terraform init'
+                }             
+            }      
+        }
+        stage('Terraform Apply') {
+            steps {
+                script {
+                    sh '/usr/local/bin/terraform apply -input=false -auto-approve'
+                }
+            }
+        }        
 	//Lastly let's deploy the application via ansible to Kubernetes
 	//stage('Deploy to Kubernetes/Ansible') {
 	//	steps {
