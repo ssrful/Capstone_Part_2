@@ -20,13 +20,13 @@ resource "kubernetes_namespace" "new_flaskapp" {
       mylabel = "new_flaskapp"
     }
 
-    name = "new_flaskapp"
+    name = "new-flaskapp"
   }
 }
 
 resource "kubernetes_deployment" "new_flaskapp" {
   metadata {
-    name = "new_flaskapp"
+    name = "new-flaskapp"
     labels = {
       App = "new_flaskapp"
     }
@@ -77,7 +77,7 @@ resource "kubernetes_deployment" "new_flaskapp" {
 
 resource "kubernetes_service" "new_flaskapp" {
   metadata {
-    name = "new_flaskapp"
+    name = "new-flaskapp"
   }
   spec {
     selector = {
