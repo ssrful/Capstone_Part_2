@@ -8,9 +8,6 @@ pipeline {
 		//Container Image name
 		dockerImage = 'new_flaskapp'
 	}
-	options {
-		skipStagesAfterUnstable ()
-	}
 	stages {
 		stage('Cleaning up previous Repositories') {
 			steps {
